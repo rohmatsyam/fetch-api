@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/public/post', [App\Http\Controllers\Api\StoreController::class, 'getAll']);
+Route::get('/public/post/{id}', [App\Http\Controllers\Api\StoreController::class, 'getSingle']);
+Route::get('/public/post/limit/{limit}', [App\Http\Controllers\Api\StoreController::class, 'getLimit']);
+Route::get('/public/post/limit/{limit}/{sort}', [App\Http\Controllers\Api\StoreController::class, 'getLimitSort']);
+Route::post('/public/post', [App\Http\Controllers\Api\StoreController::class, 'addProduct']);
